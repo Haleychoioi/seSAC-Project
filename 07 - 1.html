@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>랜덤 색상 생성기</title>
+    <style>
+      body {
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .container {
+        text-align: center;
+      }
+
+      button {
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>🤩Create Random Color🌈</h1>
+      <h2>rgb(255, 255, 255)</h2>
+      <button>Create</button>
+    </div>
+    <script>
+      const body = document.querySelector("body");
+      const rgb = document.querySelector("h2");
+      const btn = document.querySelector("button");
+
+      function randomColor() {
+        let r = Math.floor(Math.random() * 256);
+        let g = Math.floor(Math.random() * 256);
+        let b = Math.floor(Math.random() * 256);
+        let randCol = `rgb(${r}, ${g}, ${b})`;
+        rgb.innerHTML = randCol;
+        body.style.backgroundColor = randCol;
+      }
+
+      btn.addEventListener("click", randomColor);
+    </script>
+  </body>
+</html>
