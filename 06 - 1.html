@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>JS 실습 06</title>
+    <style>
+      .bad {
+        color: red;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div>민트 초코는 <span>맛있다 >_<</span></div>
+    <script>
+      const span = document.querySelector("span");
+      span.classList.add("bad");
+      span.innerHTML = "맛없다ㅡㅡ;;";
+    </script>
+  </body>
+</html>
