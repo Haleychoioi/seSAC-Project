@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>방명록 만들기</title>
+  </head>
+  <body>
+    <h1>여기는 방명록!!</h1>
+    <form>
+      <label for="writer">작성자</label>
+      <input type="text" id="writer" autocomplete="off" />
+      <br />
+      <br />
+
+      <label for="content">내용</label>
+      <input type="text" id="content" style="width: 500px" autocomplete="off" />
+      <br />
+      <br />
+
+      <button type="button" onclick="writeNote();">등록</button>
+    </form>
+
+    <br />
+    <br />
+
+    <table id="table" border="1" cellpadding="10" cellspacing="1">
+      <tr>
+        <th>작성자</th>
+        <th>내용</th>
+        <th>작성일</th>
+      </tr>
+      <!--
+        코드 추가 예시
+        <tr>
+          <td>홍길동</td>
+          <td>하이</td>
+          <td>2022-10-05 12:34</td>
+        </tr>
+      -->
+    </table>
+
+    <script>
+      const writer = document.querySelector("#writer");
+      const content = document.querySelector("#content");
+      const table = document.querySelector("#table");
+
+      function writeNote() {
+        const tr = document.createElement("tr");
+        const tdWriter = document.createElement("td");
+        const tdContent = document.createElement("td");
+        const tdTime = document.createElement("td");
+        tdWriter.innerHTML = writer.value;
+        tdContent.innerHTML = content.value;
+        tdTime.innerHTML = nowTime();
+
+        tr.appendChild(tdWriter);
+        tr.appendChild(tdContent);
+        tr.appendChild(tdTime);
+        table.appendChild(tr);
+
+        writer.value = "";
+        content.value = "";
+      }
+
+      function nowTime() {
+        const now = new Date();
+        const year = now.getFullYear();
+        const month = now.getMonth() + 1;
+        const day = now.getDate();
+        const hours = now.getHours();
+        const minutes = now.getMinutes();
+
+        return `${year}-${month < 10 ? `0${month}` : month}-${
+          day < 10 ? `0${day}` : day
+        } ${hours < 10 ? `0${hours}` : hours}:${
+          minutes < 10 ? `0${minutes}` : minutes
+        }`;
+      }
+    </script>
+  </body>
+</html>
